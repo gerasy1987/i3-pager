@@ -25,3 +25,14 @@ jobs:
 
     - name: Install
       run: sudo make -C build install
+    
+    - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
+            
+    - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.0
